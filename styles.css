@@ -401,6 +401,32 @@ img {
   }
 }
 
+.divider-elegant {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 60px auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+.divider-elegant::before,
+.divider-elegant::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d8cfc8, transparent);
+}
+
+.divider-elegant span {
+  width: 8px;
+  height: 8px;
+  background: #b89b88;
+  border-radius: 50%;
+  margin: 0 18px;
+  box-shadow: 0 0 0 4px rgba(184, 155, 136, 0.12);
+}
+
 .rsvp-form {
   max-width: 700px;
   margin: 20px auto 0;
