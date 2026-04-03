@@ -80,6 +80,22 @@ img {
   padding: 120px 20px 80px;
 }
 
+#sparkle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Make sure your content stays above it */
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+}
+
 .hero-content {
   text-align: center;
   max-width: 700px;

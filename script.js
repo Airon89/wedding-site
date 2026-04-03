@@ -109,4 +109,62 @@ if (track && prevBtn && nextBtn) {
   window.addEventListener("load", updateGallery);
 
   updateGallery();
+
+
+}
+
+// ---------- Subtle Sparkle Effect ----------
+const canvas = document.getElementById("sparkle-canvas");
+
+if (canvas) {
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+
+  function createParticles() {
+    particles = [];
+    const count = 40; // adjust for more/less sparkles
+
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5 + 0.5,
+        speedY: Math.random() * 0.3 + 0.1,
+        opacity: Math.random() * 0.3 + 0.1
+      });
+    }
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((p) => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+      ctx.fill();
+
+      // movement
+      p.y -= p.speedY;
+
+      // reset when off screen
+      if (p.y < 0) {
+        p.y = canvas.height;
+        p.x = Math.random() * canvas.width;
+      }
+    });
+
+    requestAnimationFrame(drawParticles);
+  }
+
+  createParticles();
+  drawParticles();
 }
